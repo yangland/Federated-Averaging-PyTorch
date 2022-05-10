@@ -5,6 +5,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.init as init
+import torchvision
 
 from torch.utils.data import Dataset, TensorDataset, ConcatDataset
 from torchvision import datasets, transforms
@@ -74,6 +75,7 @@ def init_net(model, init_type, init_gain, gpu_ids):
     if len(gpu_ids) > 0:
         assert(torch.cuda.is_available())
         model.to(gpu_ids[0])
+        print("gpu ids", gpu_ids)
         model = nn.DataParallel(model, gpu_ids)
     init_weights(model, init_type, init_gain)
     return model
