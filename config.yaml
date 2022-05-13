@@ -7,7 +7,7 @@ data_config:
   data_path: "./data/"
   dataset_name: "MNIST"
   num_shards: 200
-  iid: False
+  iid: True
 ---
 fed_config:
   C: 0.1
